@@ -24,5 +24,10 @@ namespace _12IA_2._8_Kyle_Barker
         {
             InitializeComponent();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

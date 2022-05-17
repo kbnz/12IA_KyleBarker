@@ -1,0 +1,15 @@
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\bin\Debug\12IA_2.8_Kyle_Barker.exe.config
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\bin\Debug\12IA_2.8_Kyle_Barker.exe
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\bin\Debug\12IA_2.8_Kyle_Barker.pdb
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.csprojAssemblyReference.cache
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\MainWindow.g.cs
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\App.g.cs
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker_MarkupCompile.cache
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker_MarkupCompile.lref
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\MainWindow.baml
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.g.resources
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\_12IA_2._8_Kyle_Barker.Properties.Resources.resources
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.csproj.GenerateResource.cache
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.csproj.CoreCompileInputs.cache
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.exe
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.pdb
