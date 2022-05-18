@@ -13,3 +13,5 @@ K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\D
 K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.csproj.CoreCompileInputs.cache
 K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.exe
 K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.pdb
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\frmGameScreen.g.cs
+K:\12IA\12IA_2.8\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\frmGameScreen.baml

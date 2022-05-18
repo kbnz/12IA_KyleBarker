@@ -10,31 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace _12IA_2._8_Kyle_Barker
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for frmGameScreen.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class frmGameScreen : Window
     {
-        public MainWindow()
+        public frmGameScreen()
         {
             InitializeComponent();
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnPlay_Click(object sender, RoutedEventArgs e)
-        {
-            frmGameScreen frmGameScreen = new frmGameScreen();
-            frmGameScreen.Show();
-            this.Close();
         }
     }
 }
