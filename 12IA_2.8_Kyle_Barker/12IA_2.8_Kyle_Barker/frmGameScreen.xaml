@@ -4,9 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_12IA_2._8_Kyle_Barker"
+        Background="{DynamicResource backgroundImage}"
         mc:Ignorable="d"
+        
         Title="frmGameScreen" Height="450" Width="800">
     <Grid>
+        <Image x:Name="imgAucklandBackground" HorizontalAlignment="Left" Height="265" VerticalAlignment="Top" Width="491" Source="Auckland.jpg" Margin="187,66,0,0" Stretch="Fill"/>
+        <DockPanel HorizontalAlignment="Left" Height="100" LastChildFill="False" VerticalAlignment="Top" Width="100"/>
+        <!--<Window.Background>
+            <ImageBrush ImageSource="/Auckland.jpg" Stretch="Fill"/>
+        </Window.Background>-->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
         
     </Grid>
 </Window>
