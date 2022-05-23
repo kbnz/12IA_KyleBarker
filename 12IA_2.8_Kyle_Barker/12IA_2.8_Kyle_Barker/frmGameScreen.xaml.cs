@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Threading;
+using System.Windows.Threading;
 
 namespace _12IA_2._8_Kyle_Barker
 {
@@ -23,12 +24,37 @@ namespace _12IA_2._8_Kyle_Barker
         public frmGameScreen()
         {
             InitializeComponent();
+
+        
+          
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+    
+
+            private void Button_Click(object sender, RoutedEventArgs e)
         {
-            test.LayoutTransform = new RotateTransform(45);
-            
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+          
+             dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
+             dispatcherTimer.Tick += Timer_Tick;
+             dispatcherTimer.Start();
+
+
+            //for (int i = 0; i > -1; i++)
+            //{
+            //    Plane.LayoutTransform = new RotateTransform(i);
+            //}
+            //Plane.LayoutTransform = new RotateTransform(45);
+
+        }
+
+          void Timer_Tick(object sender, EventArgs e)
+        { Random rand = new Random();
+            int i;
+            i = rand.Next();
+
+            sprPlane.LayoutTransform = new RotateTransform(40*i);
+           
         }
     }
 }

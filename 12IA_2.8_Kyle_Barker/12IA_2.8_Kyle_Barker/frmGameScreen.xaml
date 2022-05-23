@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         
-        Title="frmGameScreen" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Cursor="None">
+        Title="frmGameScreen" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Cursor="None">
     <Grid HorizontalAlignment="Left" Height="506" VerticalAlignment="Top" Width="762">
-       <Image Source="/Auckland.jpg" Name="test" />
-        <Image Source="/imgPlaneSprite.png"  Name="Plane"/>
+       <Image Source="/Auckland.jpg" Name="Background" />
+        <Image Source="/imgPlaneSprite.png"  Name="sprPlane"/>
 
         <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
