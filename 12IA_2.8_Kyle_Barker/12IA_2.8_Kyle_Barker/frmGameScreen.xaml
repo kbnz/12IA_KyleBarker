@@ -3,27 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:_12IA_2._8_Kyle_Barker"
-        Background="{DynamicResource backgroundImage}"
         mc:Ignorable="d"
         
-        Title="frmGameScreen" Height="450" Width="800">
-    <Grid>
-        <Image x:Name="imgAucklandBackground" HorizontalAlignment="Left" Height="265" VerticalAlignment="Top" Width="491" Source="Auckland.jpg" Margin="187,66,0,0" Stretch="Fill"/>
-        <DockPanel HorizontalAlignment="Left" Height="100" LastChildFill="False" VerticalAlignment="Top" Width="100"/>
-        <!--<Window.Background>
-            <ImageBrush ImageSource="/Auckland.jpg" Stretch="Fill"/>
-        </Window.Background>-->
+        Title="frmGameScreen" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Cursor="None">
+    <Grid HorizontalAlignment="Left" Height="506" VerticalAlignment="Top" Width="762">
+       <Image Source="/Auckland.jpg" Name="test" />
+        <Image Source="/imgPlaneSprite.png"  Name="Plane"/>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        
-        
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
     </Grid>
 </Window>
+    
+        
+        

@@ -24,5 +24,11 @@ namespace _12IA_2._8_Kyle_Barker
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            test.LayoutTransform = new RotateTransform(45);
+            
+        }
     }
 }
