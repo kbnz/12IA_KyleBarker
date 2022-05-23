@@ -35,7 +35,7 @@ namespace _12IA_2._8_Kyle_Barker
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
           
-             dispatcherTimer.Interval = TimeSpan.FromSeconds(1);
+             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
              dispatcherTimer.Tick += Timer_Tick;
              dispatcherTimer.Start();
 
