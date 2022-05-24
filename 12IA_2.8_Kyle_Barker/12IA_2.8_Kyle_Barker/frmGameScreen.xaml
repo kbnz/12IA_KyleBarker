@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         
-        Title="frmGameScreen" WindowState="Maximized" WindowStartupLocation="CenterScreen" Cursor="None" ResizeMode="CanMinimize" Width="1900" Height="1000" WindowStyle="None">
+        Title="frmGameScreen" WindowState="Maximized" WindowStartupLocation="CenterScreen" Cursor="Cross" ResizeMode="CanMinimize" Width="1900" Height="1000" WindowStyle="None">
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="auto" Margin="0,0,0,0" Width="auto">
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "9*" />
+            <ColumnDefinition Width = "1*" />
+            
 
-        <Image Source="/imgPlaneSprite.png"  Name="sprPlane" Margin="162,68,378,291" Width="0"/>
-        <Image Source="/Auckland.jpg" HorizontalAlignment="Center" Margin="0,0,0,0"  Name="background" Stretch="Fill"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image Source="/imgPlaneSprite.png"  Name="sprPlane" Margin="162,68,378,291" Width="0" Grid.Column="0"/>
+        <Image Source="/Auckland.jpg" HorizontalAlignment="Center" Margin="0,0,0,0"  Name="background" Stretch="UniformToFill"/>
+        <Button Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="1"/>
+
 
 
 
