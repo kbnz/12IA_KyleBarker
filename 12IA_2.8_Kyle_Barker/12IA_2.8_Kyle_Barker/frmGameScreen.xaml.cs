@@ -24,7 +24,7 @@ namespace _12IA_2._8_Kyle_Barker
         public frmGameScreen()
         {
             InitializeComponent();
-
+            int winHeight, winWidth;
         
           
         }
