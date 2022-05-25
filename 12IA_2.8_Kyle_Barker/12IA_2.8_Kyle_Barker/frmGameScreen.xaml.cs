@@ -49,12 +49,14 @@ namespace _12IA_2._8_Kyle_Barker
         }
 
           void Timer_Tick(object sender, EventArgs e)
-        { Random rand = new Random();
-            int i;
-            i = rand.Next();
+        { 
 
             sprPlane.LayoutTransform = new RotateTransform(40*i);
            
         }
+
+        void CallSign()
+        { }
+
     }
 }

@@ -6,19 +6,21 @@
         mc:Ignorable="d"
         
         Title="frmGameScreen" WindowState="Maximized" WindowStartupLocation="CenterScreen" Cursor="Cross" ResizeMode="CanMinimize" Width="1900" Height="1000" WindowStyle="None">
-    <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="auto" Margin="0,0,0,0" Width="auto">
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="auto" Margin="0,0,0,0" Width="1900">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "9*" />
-            <ColumnDefinition Width = "1*" />
-            
+            <ColumnDefinition Width="739*" />
+            <ColumnDefinition Width="211*" />
 
-            <ColumnDefinition />
+
+
+            <ColumnDefinition Width="0*" />
         </Grid.ColumnDefinitions>
-        <Image Source="/imgPlaneSprite.png"  Name="sprPlane" Margin="162,68,378,291" Width="0" Grid.Column="0"/>
-        <Image Source="/Auckland.jpg" HorizontalAlignment="Center" Margin="0,0,0,0"  Name="background" Stretch="UniformToFill"/>
-        <Button Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="1"/>
 
+        <Image Source="/Auckland.jpg" HorizontalAlignment="Center" Margin="-186,2,0,-2"  Name="background" Stretch="UniformToFill" Width="1664"/>
+        <Button Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" Grid.ColumnSpan="2" Margin="1477,267,1,0"/>
+        <Image Source="/imgPlaneSprite.png"  Name="sprPlane" Margin="822,68,632,291" Grid.Column="0"/>
+        <ComboBox x:Name="cmbPlaneSelector" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Grid.Column="1" Margin="10,10,0,0"/>
 
 
 
