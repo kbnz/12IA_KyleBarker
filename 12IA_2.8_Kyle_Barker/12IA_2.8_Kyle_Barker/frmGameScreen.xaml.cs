@@ -25,20 +25,27 @@ namespace _12IA_2._8_Kyle_Barker
         {
             InitializeComponent();
             int winHeight, winWidth;
-        
-          
+            CallSign(4);
+            CallSign(10);
+            
+
         }
+        List<string> callsign = new List<string>();
 
-    
 
-            private void Button_Click(object sender, RoutedEventArgs e)
+        //private void ObservableCollection<T>()
+        //{
+      
+        //}
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
           
              dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
              dispatcherTimer.Tick += Timer_Tick;
              dispatcherTimer.Start();
-
+            cmb_PlaneSelector.Items.Clear();
 
             //for (int i = 0; i > -1; i++)
             //{
@@ -51,12 +58,24 @@ namespace _12IA_2._8_Kyle_Barker
           void Timer_Tick(object sender, EventArgs e)
         { 
 
-            sprPlane.LayoutTransform = new RotateTransform(40*i);
+            sprPlane.LayoutTransform = new RotateTransform(40);
            
         }
 
-        void CallSign()
-        { }
+        public void CallSign(int length)
+        {
+            
+            Random rand = new Random();
+            for (int i = 0; i < length; i++)
+            {
+
+                callsign.Add(Convert.ToString(rand.Next(1000, 9999)));
+            }
+            foreach (string item in callsign)
+            {
+                cmb_PlaneSelector.Items.Add(item);
+            }
+        }
 
     }
 }

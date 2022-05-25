@@ -20,7 +20,7 @@
         <Image Source="/Auckland.jpg" HorizontalAlignment="Center" Margin="-186,2,0,-2"  Name="background" Stretch="UniformToFill" Width="1664"/>
         <Button Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" Grid.ColumnSpan="2" Margin="1477,267,1,0"/>
         <Image Source="/imgPlaneSprite.png"  Name="sprPlane" Margin="822,68,632,291" Grid.Column="0"/>
-        <ComboBox x:Name="cmbPlaneSelector" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Grid.Column="1" Margin="10,10,0,0"/>
+        <ComboBox x:Name="cmb_PlaneSelector" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Grid.Column="1" Margin="10,10,0,0"/>
 
 
 
