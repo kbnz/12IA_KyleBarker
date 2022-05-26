@@ -21,19 +21,19 @@ namespace _12IA_2._8_Kyle_Barker
     /// </summary>
     public partial class frmGameScreen : Window
     {
+        List<string> Callsign = new List<string>();
         public frmGameScreen()
         {
+            List<string> Callsign = new List<string>();
             InitializeComponent();
             int winHeight, winWidth;
-            CallSign(4);
-            cmb_PlaneSelector.Items.Clear();
-            callsign.Clear();
-            CallSign(10);
+            CallSign_Creator(10);
+           
             
             
 
         }
-        List<string> callsign = new List<string>();
+      
 
         public object IATAcallsign { get; private set; }
 
@@ -67,8 +67,11 @@ namespace _12IA_2._8_Kyle_Barker
            
         }
 
-        public void CallSign(int length)
+        public void CallSign_Creator(int length)
         {
+            string code;
+            int number;
+            string Completed_callsign = "";
            
         
 
@@ -257,11 +260,26 @@ namespace _12IA_2._8_Kyle_Barker
  };
 
             Random rand = new Random();
-            
+            for (int i = 0; i < length; i++)
+            {
 
-            callsign.Add(Convert.ToString(rand.Next(100, 999)));
+                Completed_callsign = null;
+            while (!Callsign.Contains(Completed_callsign)){
+                code = IATAcallsign[rand.Next(0, IATAcallsign.Length)];
+                number = rand.Next(100, 999);
+                Completed_callsign = $"{code}{number}";
+
+                Callsign.Add($"{Completed_callsign}");
+
+
+            }
+            };
+           
+           
+
             
-            foreach (string item in callsign)
+            
+            foreach (string item in Callsign)
             {
                 cmb_PlaneSelector.Items.Add(item);
             }
