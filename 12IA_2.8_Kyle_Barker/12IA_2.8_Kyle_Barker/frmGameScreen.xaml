@@ -21,8 +21,10 @@
         <Button Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" Grid.ColumnSpan="2" Margin="1477,267,1,0"/>
         <Image Source="/imgPlaneSprite.png"  Name="sprPlane" Margin="822,68,632,291" Grid.Column="0"/>
         <ComboBox x:Name="cmb_PlaneSelector" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Grid.Column="1" Margin="5,10,5,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="10,68,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="10,96,0,0" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="102,72,0,0"/>
+        <TextBox HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="102,100,0,0" Grid.Column="1"/>
+        <Label x:Name="lblHeading" Content="Heading" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,74,0,0" Grid.Column="1"/>
+        <Label x:Name="lblSpeed" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,100,0,0" Grid.Column="1"/>
 
 
 
