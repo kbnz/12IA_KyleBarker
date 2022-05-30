@@ -28,12 +28,34 @@ namespace _12IA_2._8_Kyle_Barker
             InitializeComponent();
             int winHeight, winWidth;
             CallSign_Creator(10);
-           
-            
+
+
+     
+            TranslateTransform translateTransform1 = new TranslateTransform(500, 20);
+            sprPlane.RenderTransform = translateTransform1;
+
+        
+        }
+
+               
+
+
+
+
+
+
             
 
-        }
-      
+            
+
+
+
+
+
+
+
+
+
 
         public object IATAcallsign { get; private set; }
 
@@ -47,10 +69,12 @@ namespace _12IA_2._8_Kyle_Barker
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
           
-             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
+             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(100);
              dispatcherTimer.Tick += Timer_Tick;
              dispatcherTimer.Start();
             cmb_PlaneSelector.Items.Clear();
+
+
 
             //for (int i = 0; i > -1; i++)
             //{
@@ -62,9 +86,15 @@ namespace _12IA_2._8_Kyle_Barker
 
           void Timer_Tick(object sender, EventArgs e)
         { 
-
+            
             sprPlane.LayoutTransform = new RotateTransform(40);
-           
+            Grid.GetColumn
+            TranslateTransform translateTransform1 = new TranslateTransform(500,200);
+            sprPlane.RenderTransform = translateTransform1;
+
+            sprPlane.GetItem
+
+
         }
 
         public void CallSign_Creator(int length)
