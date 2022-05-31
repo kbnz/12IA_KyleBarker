@@ -22,8 +22,16 @@ namespace _12IA_2._8_Kyle_Barker
     public partial class frmGameScreen : Window
     {
         List<string> Callsign = new List<string>();
+        double X_Location = 0;
+        double Y_Location = 0;
         public frmGameScreen()
         {
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            dispatcherTimer.Start();
+
+
             List<string> Callsign = new List<string>();
             InitializeComponent();
             int winHeight, winWidth;
@@ -31,31 +39,25 @@ namespace _12IA_2._8_Kyle_Barker
 
 
      
-            TranslateTransform translateTransform1 = new TranslateTransform(500, 20);
-            sprPlane.RenderTransform = translateTransform1;
 
         
         }
 
-               
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            TranslateTransform translateTransform1 = new TranslateTransform((Convert.ToInt32(X_Location + 1)), Convert.ToInt32(Y_Location+1));
+
+
+            sprPlane.RenderTransform = translateTransform1;
+
+
+            X_Location = translateTransform1.X;
+            Y_Location = translateTransform1.Y;
+            sprPlane.LayoutTransform = new RotateTransform(100);
 
 
 
-
-
-
-            
-
-            
-
-
-
-
-
-
-
-
-
+        }
 
         public object IATAcallsign { get; private set; }
 
@@ -67,14 +69,10 @@ namespace _12IA_2._8_Kyle_Barker
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
-          
-             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(100);
-             dispatcherTimer.Tick += Timer_Tick;
-             dispatcherTimer.Start();
+            
             cmb_PlaneSelector.Items.Clear();
 
-
+          //  sprPlane.RenderTransform = translateTransform1;
 
             //for (int i = 0; i > -1; i++)
             //{
@@ -84,15 +82,21 @@ namespace _12IA_2._8_Kyle_Barker
 
         }
 
-          void Timer_Tick(object sender, EventArgs e)
-        { 
-            
-            sprPlane.LayoutTransform = new RotateTransform(40);
-            Grid.GetColumn
-            TranslateTransform translateTransform1 = new TranslateTransform(500,200);
+         void Timer_Tick(object sender, EventArgs e)
+        {
+
+
+            TranslateTransform translateTransform1 = new TranslateTransform((Convert.ToInt32(X_Location + 5)), 100);
+
+
             sprPlane.RenderTransform = translateTransform1;
 
-            sprPlane.GetItem
+
+            X_Location = translateTransform1.X;
+            Y_Location = translateTransform1.Y;
+            sprPlane.LayoutTransform = new RotateTransform(100);
+
+           
 
 
         }
