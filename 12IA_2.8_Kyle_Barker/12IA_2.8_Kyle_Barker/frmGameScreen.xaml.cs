@@ -22,13 +22,12 @@ namespace _12IA_2._8_Kyle_Barker
     public partial class frmGameScreen : Window
     {
         List<string> Callsign = new List<string>();
-        double X_Location = 0;
-        double Y_Location = 0;
+
         public frmGameScreen()
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dispatcherTimer.Start();
 
 
@@ -43,20 +42,34 @@ namespace _12IA_2._8_Kyle_Barker
         
         }
 
+        int inputVector = 45;
+        double X_Location_Start;
+        double Y_Location_Start;
+
+        double X_Location_Current = 0;
+        double Y_Location_Current = 0;
+
+        double Y_Point;
+        double X_Point;
+
+
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            TranslateTransform translateTransform1 = new TranslateTransform((Convert.ToInt32(X_Location + 1)), Convert.ToInt32(Y_Location+1));
+           TranslateTransform translateTransform1 = new TranslateTransform((Convert.ToInt32(X_Location_Current + X_Point)), Convert.ToInt32(Y_Location_Current+Y_Point));
 
 
-            sprPlane.RenderTransform = translateTransform1;
+           sprPlane.RenderTransform = translateTransform1;
 
 
-            X_Location = translateTransform1.X;
-            Y_Location = translateTransform1.Y;
-            sprPlane.LayoutTransform = new RotateTransform(100);
+           X_Location_Current = translateTransform1.X;
+           Y_Location_Current = translateTransform1.Y;
+            sprPlane.LayoutTransform = new RotateTransform(inputVector);
 
+            //Y_Point = 90/inputVector;
+            //X_Point = 90 - Y_Point;
 
-
+            X_Point = 90 / inputVector;
+            Y_Point = 90 - X_Point;
         }
 
         public object IATAcallsign { get; private set; }
@@ -82,24 +95,29 @@ namespace _12IA_2._8_Kyle_Barker
 
         }
 
-         void Timer_Tick(object sender, EventArgs e)
-        {
+     
+
+        //void Timer_Tick(object sender, EventArgs e)
+        //{
+
+        //    int inputVector = 0;
+        //    TranslateTransform translateTransform1 = new TranslateTransform((Convert.ToInt32(X_Location_Current + 5)), 100);
 
 
-            TranslateTransform translateTransform1 = new TranslateTransform((Convert.ToInt32(X_Location + 5)), 100);
+        //    sprPlane.RenderTransform = translateTransform1;
 
 
-            sprPlane.RenderTransform = translateTransform1;
+        //    X_Location_Current = translateTransform1.X;
+        //    Y_Location_Current = translateTransform1.Y;
+        //    sprPlane.LayoutTransform = new RotateTransform(inputVector);
 
 
-            X_Location = translateTransform1.X;
-            Y_Location = translateTransform1.Y;
-            sprPlane.LayoutTransform = new RotateTransform(100);
+        //    if (inputVector >= 0)
+        //    {
+               
+        //    }
 
-           
-
-
-        }
+        //}
 
         public void CallSign_Creator(int length)
         {
