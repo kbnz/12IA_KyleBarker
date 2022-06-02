@@ -35,10 +35,10 @@
 
 
         <ComboBox x:Name="cmb_PlaneSelector" HorizontalAlignment="Stretch" VerticalAlignment="Top"  Grid.Column="1" Margin="5,10,5,0"/>
-        <TextBox HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="102,72,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="102,100,0,0" Grid.Column="1"/>
+        <TextBox x:Name="txtHeading" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Margin="102,72,0,0"/>
+        <TextBox x:Name="txtSpeed" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="102,100,0,0" Grid.Column="1"/>
         <Label x:Name="lblHeading" Content="Heading" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,74,0,0" Grid.Column="1"/>
-        <Label x:Name="lblSpeed" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,100,0,0" Grid.Column="1"/>
+        <Label x:Name="lblSpeed" Content="Speed" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,100,0,0" Grid.Column="1"/>
 
 
 
