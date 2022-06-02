@@ -22,7 +22,10 @@ namespace _12IA_2._8_Kyle_Barker
     public partial class frmGameScreen : Window
     {
         List<string> Callsign = new List<string>();
+        List<int> Heading = new List<int>();
+        List<int> Speed = new List<int>();
 
+        int heading, speed;
         public frmGameScreen()
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
@@ -55,6 +58,10 @@ namespace _12IA_2._8_Kyle_Barker
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
+           
+
+  
+        
            TranslateTransform translateTransform1 = new TranslateTransform((Convert.ToInt32(X_Location_Current + X_Point)), Convert.ToInt32(Y_Location_Current+Y_Point));
 
 
@@ -70,6 +77,11 @@ namespace _12IA_2._8_Kyle_Barker
 
             X_Point = 90 / inputVector;
             Y_Point = 90 - X_Point;
+
+
+
+
+    
         }
 
         public object IATAcallsign { get; private set; }
@@ -84,8 +96,13 @@ namespace _12IA_2._8_Kyle_Barker
         {
             
             cmb_PlaneSelector.Items.Clear();
+            heading = Convert.ToInt32(txtHeading);
+            speed = Convert.ToInt32(txtSpeed);
 
-          //  sprPlane.RenderTransform = translateTransform1;
+            Heading[1] = heading
+
+
+            //  sprPlane.RenderTransform = translateTransform1;
 
             //for (int i = 0; i > -1; i++)
             //{
