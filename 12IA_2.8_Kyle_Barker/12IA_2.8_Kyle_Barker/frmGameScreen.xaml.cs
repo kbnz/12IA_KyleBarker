@@ -99,7 +99,7 @@ namespace _12IA_2._8_Kyle_Barker
             heading = Convert.ToInt32(txtHeading);
             speed = Convert.ToInt32(txtSpeed);
 
-            Heading[1] = heading
+            Heading[1] = heading;
 
 
             //  sprPlane.RenderTransform = translateTransform1;

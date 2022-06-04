@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         
-        Title="frmGameScreen" WindowState="Maximized" WindowStartupLocation="CenterScreen" Cursor="Cross" ResizeMode="CanMinimize" Width="1900" Height="1000" WindowStyle="None">
+        Title="frmGameScreen" WindowState="Normal" WindowStartupLocation="CenterScreen" Cursor="Cross" ResizeMode="CanMinimize" Width="1900" Height="1000" WindowStyle="None">
 
 
     
