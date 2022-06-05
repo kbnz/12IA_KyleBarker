@@ -30,13 +30,13 @@ namespace _12IA_2._8_Kyle_Barker
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             dispatcherTimer.Start();
 
 
             List<string> Callsign = new List<string>();
             InitializeComponent();
-            int winHeight, winWidth;
+
             CallSign_Creator(10);
 
 
@@ -45,7 +45,7 @@ namespace _12IA_2._8_Kyle_Barker
         
         }
 
-        int inputVector = 45;
+        int inputVector = 99;
         double X_Location_Start;
         double Y_Location_Start;
 
@@ -53,35 +53,48 @@ namespace _12IA_2._8_Kyle_Barker
         double Y_Location_Current = 0;
 
         double Y_Point;
-        double X_Point;
+        double X_Point = 100;
+        double X_Length, Y_Length;
 
 
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
+       public void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-           
-
-  
-        
-           TranslateTransform translateTransform1 = new TranslateTransform((Convert.ToInt32(X_Location_Current + X_Point)), Convert.ToInt32(Y_Location_Current+Y_Point));
+         
 
 
-           sprPlane.RenderTransform = translateTransform1;
+
+            if (inputVector <90)
+            {
+                X_Length = (2 * (Math.Sin((Math.PI / 180) * inputVector)));
+                Y_Length = (X_Length * Math.Tan((90 - inputVector) * (Math.PI / 180)));
+                X_Point = X_Location_Current + X_Length;
+                Y_Point = Y_Location_Current - Y_Length;
+            }
 
 
-           X_Location_Current = translateTransform1.X;
-           Y_Location_Current = translateTransform1.Y;
+            if (inputVector>90 && inputVector < 180)
+            {
+                inputVector = inputVector % 90;
+                X_Length = (2 * (Math.Sin((Math.PI / 180) * inputVector)));
+                Y_Length = (X_Length * Math.Tan((90 - inputVector) * (Math.PI / 180)));
+                X_Point = X_Location_Current - X_Length;
+                Y_Point = Y_Location_Current + Y_Length;
+            }
+
+
+            TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
+
+            sprPlane.RenderTransform = translateTransform1;
+            X_Location_Current = translateTransform1.X;
+            Y_Location_Current = translateTransform1.Y;
             sprPlane.LayoutTransform = new RotateTransform(inputVector);
 
-            //Y_Point = 90/inputVector;
-            //X_Point = 90 - Y_Point;
-
-            X_Point = 90 / inputVector;
-            Y_Point = 90 - X_Point;
 
 
 
 
-    
+
+
         }
 
         public object IATAcallsign { get; private set; }
@@ -343,16 +356,15 @@ namespace _12IA_2._8_Kyle_Barker
 
             }
             };
-           
-           
 
-            
             
             foreach (string item in Callsign)
             {
                 cmb_PlaneSelector.Items.Add(item);
             }
         }
+
+
 
     }
 }
