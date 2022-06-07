@@ -45,7 +45,7 @@ namespace _12IA_2._8_Kyle_Barker
         
         }
 
-        int inputVector = 99;
+        int inputVector = 210;
         double X_Location_Start;
         double Y_Location_Start;
 
@@ -63,23 +63,24 @@ namespace _12IA_2._8_Kyle_Barker
 
 
 
-            if (inputVector <90)
-            {
+         
                 X_Length = (2 * (Math.Sin((Math.PI / 180) * inputVector)));
                 Y_Length = (X_Length * Math.Tan((90 - inputVector) * (Math.PI / 180)));
                 X_Point = X_Location_Current + X_Length;
                 Y_Point = Y_Location_Current - Y_Length;
-            }
+            
+
+            //if (inputVector>90 && inputVector < 180)
+            //{
+             
+            //    X_Length = (2 * (Math.Sin((Math.PI / 180) * inputVector)));
+            //    Y_Length = (X_Length * Math.Tan((90 - inputVector) * (Math.PI / 180)));
+            //    X_Point = X_Location_Current + X_Length;
+            //    Y_Point = Y_Location_Current - Y_Length;
 
 
-            if (inputVector>90 && inputVector < 180)
-            {
-                inputVector = inputVector % 90;
-                X_Length = (2 * (Math.Sin((Math.PI / 180) * inputVector)));
-                Y_Length = (X_Length * Math.Tan((90 - inputVector) * (Math.PI / 180)));
-                X_Point = X_Location_Current - X_Length;
-                Y_Point = Y_Location_Current + Y_Length;
-            }
+
+            //}
 
 
             TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
