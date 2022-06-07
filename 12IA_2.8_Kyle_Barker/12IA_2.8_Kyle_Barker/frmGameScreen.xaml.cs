@@ -39,13 +39,22 @@ namespace _12IA_2._8_Kyle_Barker
 
             CallSign_Creator(10);
 
+            for (int i = 0; i < 360; i++)
+            {
+                Heading.Add(i);
+            }
 
      
 
         
         }
+      
+   
 
-        int inputVector = 210;
+
+        int inputVector = 90;
+
+
         double X_Location_Start;
         double Y_Location_Start;
 
@@ -59,43 +68,29 @@ namespace _12IA_2._8_Kyle_Barker
 
        public void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-         
+            foreach (int item in Heading)
+            {
+                inputVector = Heading[item];
+
+            }
 
 
+                //THIS WORKS
 
-         
                 X_Length = (2 * (Math.Sin((Math.PI / 180) * inputVector)));
                 Y_Length = (X_Length * Math.Tan((90 - inputVector) * (Math.PI / 180)));
                 X_Point = X_Location_Current + X_Length;
                 Y_Point = Y_Location_Current - Y_Length;
+
+
+
+                TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
+
+                sprPlane.RenderTransform = translateTransform1;
+                X_Location_Current = translateTransform1.X;
+                Y_Location_Current = translateTransform1.Y;
+                sprPlane.LayoutTransform = new RotateTransform(inputVector);
             
-
-            //if (inputVector>90 && inputVector < 180)
-            //{
-             
-            //    X_Length = (2 * (Math.Sin((Math.PI / 180) * inputVector)));
-            //    Y_Length = (X_Length * Math.Tan((90 - inputVector) * (Math.PI / 180)));
-            //    X_Point = X_Location_Current + X_Length;
-            //    Y_Point = Y_Location_Current - Y_Length;
-
-
-
-            //}
-
-
-            TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
-
-            sprPlane.RenderTransform = translateTransform1;
-            X_Location_Current = translateTransform1.X;
-            Y_Location_Current = translateTransform1.Y;
-            sprPlane.LayoutTransform = new RotateTransform(inputVector);
-
-
-
-
-
-
-
         }
 
         public object IATAcallsign { get; private set; }
