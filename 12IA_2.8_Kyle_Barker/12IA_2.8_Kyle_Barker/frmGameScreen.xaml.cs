@@ -29,29 +29,30 @@ namespace _12IA_2._8_Kyle_Barker
         int heading, speed;
         public frmGameScreen()
         {
+            InitializeComponent();
+            CallSign_Creator(10);
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             dispatcherTimer.Start();
 
 
             List<string> Callsign = new List<string>();
-            InitializeComponent();
+     
 
-            CallSign_Creator(10);
+           
 
             for (int i = 0; i < 360; i++)
             {
                 Heading.Add(i);
             }
 
-     
+            
 
         
         }
-      
-   
 
+  
 
         int inputVector = 95;
 
@@ -69,38 +70,37 @@ namespace _12IA_2._8_Kyle_Barker
 
        public void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            //foreach (int item in Heading)
-            //{
-            //    inputVector = Heading[item];
-
-            //}
 
 
-                //THIS WORKS
+            //THIS WORKS
 
-                X_Length = (2 * (Math.Sin((Math.PI / 180) * inputVector)));
-                Y_Length = (X_Length * Math.Tan((90 - inputVector) * (Math.PI / 180)));
-                X_Point = X_Location_Current + X_Length;
-                Y_Point = Y_Location_Current - Y_Length;
+            foreach (string item in Callsign)
+            {
+                Plane_Movement(item);
+            }
 
-            int i;
-          
-                
-                TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
-
-                sprPlane.RenderTransform = translateTransform1;
-                X_Location_Current = translateTransform1.X;
-                Y_Location_Current = translateTransform1.Y;
-                sprPlane.LayoutTransform = new RotateTransform(inputVector);
-            
+         
         }
 
-        void Plane_Generator(string UniCallsign)
-        {
+         void Plane_Movement(string planeID) {
+            X_Length = (2 * (Math.Sin((Math.PI / 180) * inputVector)));
+            Y_Length = (X_Length * Math.Tan((90 - inputVector) * (Math.PI / 180)));
+            X_Point = X_Location_Current + X_Length;
+            Y_Point = Y_Location_Current - Y_Length;
+
+
+
+
+            TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
+
+          sprPlane.RenderTransform = translateTransform1;
+            X_Location_Current = translateTransform1.X;
+            Y_Location_Current = translateTransform1.Y;
+            sprPlane.LayoutTransform = new RotateTransform(inputVector);
+
 
 
         }
-
         public object IATAcallsign { get; private set; }
 
 
@@ -119,39 +119,11 @@ namespace _12IA_2._8_Kyle_Barker
             Heading[1] = heading;
 
 
-            //  sprPlane.RenderTransform = translateTransform1;
-
-            //for (int i = 0; i > -1; i++)
-            //{
-            //    Plane.LayoutTransform = new RotateTransform(i);
-            //}
-            //Plane.LayoutTransform = new RotateTransform(45);
-
         }
 
      
 
-        //void Timer_Tick(object sender, EventArgs e)
-        //{
-
-        //    int inputVector = 0;
-        //    TranslateTransform translateTransform1 = new TranslateTransform((Convert.ToInt32(X_Location_Current + 5)), 100);
-
-
-        //    sprPlane.RenderTransform = translateTransform1;
-
-
-        //    X_Location_Current = translateTransform1.X;
-        //    Y_Location_Current = translateTransform1.Y;
-        //    sprPlane.LayoutTransform = new RotateTransform(inputVector);
-
-
-        //    if (inputVector >= 0)
-        //    {
-               
-        //    }
-
-        //}
+       
 
         public void CallSign_Creator(int length)
         {
@@ -357,15 +329,29 @@ namespace _12IA_2._8_Kyle_Barker
 
                     Callsign.Add($"{Completed_callsign}");
 
-                    ImageBrush SpriteCreator = new ImageBrush();
-                   
-                    SpriteCreator.ImageSource = new BitmapImage(new Uri(@"imgPlaneSprite.png", UriKind.Relative));
-                    SpriteCreator.SetValue(SpriteCreator.Name, Completed_callsign);
-                    SpriteCreator.
+                    ImageBrush SpriteCreator = new  ImageBrush();
 
-                }   
+
+                    //set value works just need to find prevoius name
+            SpriteCreator.SetValue(NameProperty, "hi");
+
+
+
+                    SpriteCreator.ImageSource = new BitmapImage(new Uri(@"imgPlaneSprite.png", UriKind.Relative));
+
+
+
+
+
+
+
+
+                }
             };
 
+
+         
+        
             
             foreach (string item in Callsign)
             {
