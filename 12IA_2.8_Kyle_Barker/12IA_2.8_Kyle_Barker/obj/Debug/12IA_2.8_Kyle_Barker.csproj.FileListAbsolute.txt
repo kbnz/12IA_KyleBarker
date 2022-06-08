@@ -33,3 +33,21 @@ Z:\School\HBHS\2022\12IA\2.8 Kyle Barker\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12
 Z:\School\HBHS\2022\12IA\2.8 Kyle Barker\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\_12IA_2._8_Kyle_Barker.Properties.Resources.resources
 Z:\School\HBHS\2022\12IA\2.8 Kyle Barker\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.csproj.GenerateResource.cache
 Z:\School\HBHS\2022\12IA\2.8 Kyle Barker\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.csproj.CoreCompileInputs.cache
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\bin\Debug\12IA_2.8_Kyle_Barker.exe.config
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\bin\Debug\12IA_2.8_Kyle_Barker.exe
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\bin\Debug\12IA_2.8_Kyle_Barker.pdb
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.csproj.AssemblyReference.cache
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.csproj.SuggestedBindingRedirects.cache
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\frmGameScreen.baml
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\frmGameScreen.g.cs
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\MainWindow.g.cs
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\App.g.cs
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker_MarkupCompile.cache
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker_MarkupCompile.lref
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\MainWindow.baml
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.g.resources
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\_12IA_2._8_Kyle_Barker.Properties.Resources.resources
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.csproj.GenerateResource.cache
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.csproj.CoreCompileInputs.cache
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.exe
+C:\Users\kyleb\OneDrive\Dump\Documents\programming\12IA_KyleBarker\12IA_2.8_Kyle_Barker\12IA_2.8_Kyle_Barker\obj\Debug\12IA_2.8_Kyle_Barker.pdb

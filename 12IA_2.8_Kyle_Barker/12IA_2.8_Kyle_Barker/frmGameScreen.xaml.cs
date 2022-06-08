@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Threading;
 using System.Windows.Threading;
 
+
 namespace _12IA_2._8_Kyle_Barker
 {
     /// <summary>
@@ -52,7 +53,7 @@ namespace _12IA_2._8_Kyle_Barker
    
 
 
-        int inputVector = 90;
+        int inputVector = 95;
 
 
         double X_Location_Start;
@@ -68,11 +69,11 @@ namespace _12IA_2._8_Kyle_Barker
 
        public void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            foreach (int item in Heading)
-            {
-                inputVector = Heading[item];
+            //foreach (int item in Heading)
+            //{
+            //    inputVector = Heading[item];
 
-            }
+            //}
 
 
                 //THIS WORKS
@@ -82,8 +83,9 @@ namespace _12IA_2._8_Kyle_Barker
                 X_Point = X_Location_Current + X_Length;
                 Y_Point = Y_Location_Current - Y_Length;
 
-
-
+            int i;
+          
+                
                 TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
 
                 sprPlane.RenderTransform = translateTransform1;
@@ -91,6 +93,12 @@ namespace _12IA_2._8_Kyle_Barker
                 Y_Location_Current = translateTransform1.Y;
                 sprPlane.LayoutTransform = new RotateTransform(inputVector);
             
+        }
+
+        void Plane_Generator(string UniCallsign)
+        {
+
+
         }
 
         public object IATAcallsign { get; private set; }
@@ -342,15 +350,20 @@ namespace _12IA_2._8_Kyle_Barker
             {
 
                 Completed_callsign = null;
-            while (!Callsign.Contains(Completed_callsign)){
-                code = IATAcallsign[rand.Next(0, IATAcallsign.Length)];
-                number = rand.Next(100, 999);
-                Completed_callsign = $"{code}{number}";
+                while (!Callsign.Contains(Completed_callsign)) {
+                    code = IATAcallsign[rand.Next(0, IATAcallsign.Length)];
+                    number = rand.Next(100, 999);
+                    Completed_callsign = $"{code}{number}";
 
-                Callsign.Add($"{Completed_callsign}");
+                    Callsign.Add($"{Completed_callsign}");
 
+                    ImageBrush SpriteCreator = new ImageBrush();
+                   
+                    SpriteCreator.ImageSource = new BitmapImage(new Uri(@"imgPlaneSprite.png", UriKind.Relative));
+                    SpriteCreator.SetValue(SpriteCreator.Name, Completed_callsign);
+                    SpriteCreator.
 
-            }
+                }   
             };
 
             
