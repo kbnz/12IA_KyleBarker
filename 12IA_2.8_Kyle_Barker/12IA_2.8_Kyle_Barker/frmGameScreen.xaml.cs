@@ -328,18 +328,19 @@ namespace _12IA_2._8_Kyle_Barker
                     Completed_callsign = $"{code}{number}";
 
                     Callsign.Add($"{Completed_callsign}");
-
-                    ImageBrush SpriteCreator = new  ImageBrush();
-
-
-                    //set value works just need to find prevoius name
-            SpriteCreator.SetValue(NameProperty, "hi");
+                    {
+                        ImageBrush SpriteCreator = new ImageBrush();
 
 
+                        //set value works just need to find prevoius name
+                        SpriteCreator.SetValue(NameProperty, "hi");
 
-                    SpriteCreator.ImageSource = new BitmapImage(new Uri(@"imgPlaneSprite.png", UriKind.Relative));
 
 
+                        SpriteCreator.ImageSource = new BitmapImage(new Uri(@"imgPlaneSprite.png", UriKind.Relative));
+                       
+                    }
+                    
 
 
 

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ATC Menu Screen" Height="450" Width="800" Background="#FF0097FF">
     <Grid>
-        
+        <Image Source="/OpenscreenBackground.jpg"></Image>
         <Button x:Name="btnPlay" Content="Play" HorizontalAlignment="Left" Height="57" Margin="119,203,0,0" VerticalAlignment="Top" Width="236" Click="btnPlay_Click"/>
         <Button Content="Instructions" HorizontalAlignment="Left" Height="57" Margin="403,203,0,0" VerticalAlignment="Top" Width="236"
                 x:Name="btnInsturctions" Click="button_Click"/>
