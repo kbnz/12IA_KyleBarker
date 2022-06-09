@@ -25,6 +25,7 @@ namespace _12IA_2._8_Kyle_Barker
         List<string> Callsign = new List<string>();
         List<int> Heading = new List<int>();
         List<int> Speed = new List<int>();
+        Image[] Plane_callsigns = new Image[10];
 
         int heading, speed;
         public frmGameScreen()
@@ -33,23 +34,17 @@ namespace _12IA_2._8_Kyle_Barker
             CallSign_Creator(10);
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             dispatcherTimer.Start();
 
 
             List<string> Callsign = new List<string>();
      
-
-           
-
             for (int i = 0; i < 360; i++)
             {
                 Heading.Add(i);
             }
 
-            
-
-        
         }
 
   
@@ -74,32 +69,48 @@ namespace _12IA_2._8_Kyle_Barker
 
             //THIS WORKS
 
-            foreach (string item in Callsign)
-            {
-                Plane_Movement(item);
-            }
+        
+            
+                Plane_Movement();
+      
 
          
         }
 
-         void Plane_Movement(string planeID) {
-            X_Length = (2 * (Math.Sin((Math.PI / 180) * inputVector)));
-            Y_Length = (X_Length * Math.Tan((90 - inputVector) * (Math.PI / 180)));
-            X_Point = X_Location_Current + X_Length;
-            Y_Point = Y_Location_Current - Y_Length;
+         void Plane_Movement() {
+
+
+            for (int i = 0; i < Plane_callsigns.Length; i++)
+            {
+
+                
+
+                X_Length = (2 * (Math.Sin((Math.PI / 180) * Heading[i])));
+                Y_Length = (X_Length * Math.Tan((90 - Heading[i]) * (Math.PI / 180)));
+                X_Point = X_Location_Current + X_Length;
+                Y_Point = Y_Location_Current - Y_Length;
+                TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
+                X_Location_Current = translateTransform1.X;
+                Y_Location_Current = translateTransform1.Y;
 
 
 
 
-            TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
-
-          sprPlane.RenderTransform = translateTransform1;
-            X_Location_Current = translateTransform1.X;
-            Y_Location_Current = translateTransform1.Y;
-            sprPlane.LayoutTransform = new RotateTransform(inputVector);
 
 
+                Plane_callsigns[i].RenderTransform = translateTransform1;
+                    
+                Plane_callsigns[i].LayoutTransform = new RotateTransform(inputVector);
+                
 
+               
+            }
+           
+
+        
+
+    
+            
         }
         public object IATAcallsign { get; private set; }
 
@@ -130,8 +141,6 @@ namespace _12IA_2._8_Kyle_Barker
             string code;
             int number;
             string Completed_callsign = "";
-           
-        
 
             String[] IATAcallsign = {"AA","2G",
 "CO",
@@ -316,12 +325,11 @@ namespace _12IA_2._8_Kyle_Barker
 "UX",
 "BG",
  };
-
+           
             Random rand = new Random();
             for (int i = 0; i < length; i++)
             {
-
-                Image[] Completed_callsigns = new Image[10];
+                Completed_callsign = null;
                 while (!Callsign.Contains(Completed_callsign)) {
                     code = IATAcallsign[rand.Next(0, IATAcallsign.Length)];
                     number = rand.Next(100, 999);
@@ -329,30 +337,15 @@ namespace _12IA_2._8_Kyle_Barker
 
                     Callsign.Add($"{Completed_callsign}");
                     {
-                        Completed_callsigns[1] = new Image();
-                        Completed_callsigns[1].Source = new BitmapImage(new Uri(@"imgPlaneSprite.png", UriKind.Relative));
-
-
-                        //set value works just need to find prevoius name
-
-                        
-                       
-                       
-                    }
-                    
-
-
-
-
-
-
+                        Plane_callsigns[i] = new Image();
+                        Plane_callsigns[i].Source = new BitmapImage(new Uri(@"imgPlaneSprite.png", UriKind.Relative));
+                        Plane_callsigns[i].Width = 50;
+                        Plane_callsigns[i].Height = 50;
+                        Plane_callsigns[i].Stretch = Stretch.Fill;
+                    }  
                 }
             };
 
-
-         
-        
-            
             foreach (string item in Callsign)
             {
                 cmb_PlaneSelector.Items.Add(item);
