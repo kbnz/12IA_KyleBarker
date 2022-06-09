@@ -321,7 +321,7 @@ namespace _12IA_2._8_Kyle_Barker
             for (int i = 0; i < length; i++)
             {
 
-                Completed_callsign = null;
+                Image[] Completed_callsigns = new Image[10];
                 while (!Callsign.Contains(Completed_callsign)) {
                     code = IATAcallsign[rand.Next(0, IATAcallsign.Length)];
                     number = rand.Next(100, 999);
@@ -329,15 +329,14 @@ namespace _12IA_2._8_Kyle_Barker
 
                     Callsign.Add($"{Completed_callsign}");
                     {
-                        ImageBrush SpriteCreator = new ImageBrush();
+                        Completed_callsigns[1] = new Image();
+                        Completed_callsigns[1].Source = new BitmapImage(new Uri(@"imgPlaneSprite.png", UriKind.Relative));
 
 
                         //set value works just need to find prevoius name
-                        SpriteCreator.SetValue(NameProperty, "hi");
 
-
-
-                        SpriteCreator.ImageSource = new BitmapImage(new Uri(@"imgPlaneSprite.png", UriKind.Relative));
+                        
+                       
                        
                     }
                     
