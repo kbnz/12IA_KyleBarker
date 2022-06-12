@@ -34,16 +34,19 @@ namespace _12IA_2._8_Kyle_Barker
             CallSign_Creator(10);
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
             dispatcherTimer.Start();
 
 
             List<string> Callsign = new List<string>();
-     
-            for (int i = 0; i < 360; i++ )
-            {
-                Heading.Add(i);
-            }
+
+            Heading.Add(5);
+            Heading.Add(5);
+            Heading.Add(45);
+            Heading.Add(35);
+            Heading.Add(270);
+            Heading.Add(5); Heading.Add(5); Heading.Add(5); Heading.Add(5); Heading.Add(5); Heading.Add(5); Heading.Add(5); Heading.Add(5); Heading.Add(5); Heading.Add(5);
+
 
 
 
@@ -63,21 +66,36 @@ namespace _12IA_2._8_Kyle_Barker
         double X_Point = 100;
         double X_Length, Y_Length;
 
-        TranslateTransform translateTransform1 = new TranslateTransform();
-        
+        // TranslateTransform translateTransform1 = new TranslateTransform();
         public void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-           
 
-          
+
+
+
+
 
             for (int i = 0; i < Plane_callsigns.Length; i++)
             {
 
+                TranslateTransform translateTransform1 = new TranslateTransform(X_Point,Y_Point);
+        
 
-               Plane_callsigns[i].RenderTransform = translateTransform1;
 
-                
+                if (i > 0)
+                {
+                    Plane_callsigns[i - 1].RenderTransform = translateTransform1;
+                }
+                else
+                {
+                    Plane_callsigns[i].RenderTransform = translateTransform1;
+                }
+                translateTransform1 = null ;
+                X_Point = double.NaN;
+                Y_Point = double.NaN;
+
+                Plane_callsigns[i].RenderTransform = translateTransform1;
+
 
                 X_Location_Current = translateTransform1.X;
                 Y_Location_Current = translateTransform1.Y;
@@ -90,12 +108,16 @@ namespace _12IA_2._8_Kyle_Barker
                 translateTransform1.X = X_Point;
                 translateTransform1.Y = Y_Point;
 
-                 Plane_callsigns[i].RenderTransform = translateTransform1;
+               // Plane_callsigns[i].RenderTransform = translateTransform1;
 
-                TranslateTransform(X_Point, Y_Point);
 
-                Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i+1]);
+               // Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i+1]);
+
+                
             }
+
+
+
 
          void Plane_Movement() {
             //TranslateTransform translateTransform1 = new TranslateTransform();
