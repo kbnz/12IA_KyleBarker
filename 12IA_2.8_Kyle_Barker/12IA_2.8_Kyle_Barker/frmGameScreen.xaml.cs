@@ -70,7 +70,27 @@ namespace _12IA_2._8_Kyle_Barker
         public void dispatcherTimer_Tick(object sender, EventArgs e)
         {
 
+            foreach (var item in Plane_callsigns)
+            { int i= 1;
+                
+                i++;
 
+                TranslateTransform[] translateTransform = new TranslateTransform[10];
+
+                item.RenderTransform = translateTransform[i];
+item.t                X_Location_Current = translateTransform[i].X;
+                Y_Location_Current = translateTransform[i].Y;
+
+                X_Length = (2 * (Math.Sin((Math.PI / 180) * Heading[i + 1])));
+                Y_Length = (X_Length * Math.Tan((90 - Heading[i-1]) * (Math.PI / 180)));
+                X_Point = X_Location_Current + X_Length;
+                Y_Point = Y_Location_Current - Y_Length;
+
+                translateTransform[i].X = X_Point;
+                translateTransform[i].Y = Y_Point;
+
+                item.RenderTransform = translateTransform[i];
+            }
 
 
 
@@ -78,42 +98,42 @@ namespace _12IA_2._8_Kyle_Barker
             for (int i = 0; i < Plane_callsigns.Length; i++)
             {
 
-                TranslateTransform translateTransform1 = new TranslateTransform(X_Point,Y_Point);
-        
+                //TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
 
 
-                if (i > 0)
-                {
-                    Plane_callsigns[i - 1].RenderTransform = translateTransform1;
-                }
-                else
-                {
-                    Plane_callsigns[i].RenderTransform = translateTransform1;
-                }
-                translateTransform1 = null ;
-                X_Point = double.NaN;
-                Y_Point = double.NaN;
 
-                Plane_callsigns[i].RenderTransform = translateTransform1;
+                //if (i > 0)
+                //{
+                //    Plane_callsigns[i - 1].RenderTransform = translateTransform1;
+                //}
+                //else
+                //{
+                //    Plane_callsigns[i].RenderTransform = translateTransform1;
+                //}
+                //translateTransform1 = null;
+                //X_Point = double.NaN;
+                //Y_Point = double.NaN;
 
-
-                X_Location_Current = translateTransform1.X;
-                Y_Location_Current = translateTransform1.Y;
-
-                X_Length = (2 * (Math.Sin((Math.PI / 180) * Heading[i+1])));
-                Y_Length = (X_Length * Math.Tan((90 - Heading[i+1]) * (Math.PI / 180)));
-                X_Point = X_Location_Current + X_Length;
-                Y_Point = Y_Location_Current - Y_Length;
-
-                translateTransform1.X = X_Point;
-                translateTransform1.Y = Y_Point;
-
-               // Plane_callsigns[i].RenderTransform = translateTransform1;
+                //Plane_callsigns[i].RenderTransform = translateTransform1;
 
 
-               // Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i+1]);
+                //X_Location_Current = translateTransform1.X;
+                //Y_Location_Current = translateTransform1.Y;
 
-                
+                //X_Length = (2 * (Math.Sin((Math.PI / 180) * Heading[i + 1])));
+                //Y_Length = (X_Length * Math.Tan((90 - Heading[i + 1]) * (Math.PI / 180)));
+                //X_Point = X_Location_Current + X_Length;
+                //Y_Point = Y_Location_Current - Y_Length;
+
+                //translateTransform1.X = X_Point;
+                //translateTransform1.Y = Y_Point;
+
+                //Plane_callsigns[i].RenderTransform = translateTransform1;
+
+
+                //Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i + 1]);
+
+
             }
 
 
