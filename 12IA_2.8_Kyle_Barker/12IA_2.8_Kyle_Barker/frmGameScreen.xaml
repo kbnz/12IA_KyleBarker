@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
 
         <Image Source="/Auckland.jpg" HorizontalAlignment="Center" Margin="-186,2,0,-2"  Name="background" Stretch="UniformToFill" Width="1664"/>
-        <Button Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" Grid.ColumnSpan="2" Margin="1477,267,1,0"/>
+        <Button x:Name="btnChange" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" Grid.ColumnSpan="2" Margin="1477,267,1,0" Click="btnChange_Click"/>
        
 
         

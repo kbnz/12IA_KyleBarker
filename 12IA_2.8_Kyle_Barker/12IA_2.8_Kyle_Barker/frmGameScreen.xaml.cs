@@ -38,22 +38,22 @@ namespace _12IA_2._8_Kyle_Barker
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
-           
 
 
+            dispatcherTimer.Start();
             List<string> Callsign = new List<string>();
             for (int i = 0; i < nPlane; i++)
             {
-              Heading.Add(rand.Next(0, 360));
+              Heading.Add(rand.Next(1,360));
               
             }
-            dispatcherTimer.Start();
+            
         }
 
 
         double X_Length, Y_Length;
         int distance = 0;
-        int tempHeading;
+        double tempHeading;
         // TranslateTransform translateTransform1 = new TranslateTransform();
         public void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -67,29 +67,57 @@ namespace _12IA_2._8_Kyle_Barker
 
 
 
-                tempHeading = Heading[i] % 90;
+                tempHeading = ((Heading[i] % 90) * (Math.PI*180));
 
+                if ( 90 > Heading[i])
+                {
 
+                    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
+                    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
 
-                X_Length = -(Math.Sin(Heading[i]) * distance);
-                // Y_Length = Math.Cos(Heading[i]) * distance;
-                Y_Length = -((Math.Tan(90 - Heading[i])) * distance);
+                }
+
+                else if (Heading[i] > 90 && 180 > Heading[i])
+                {
+
+                    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
+                    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
+                }
+                else if (Heading[i] > 180 && 270 > Heading[i])
+                {
+                    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
+                    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
+                }
+                else if  (Heading[i] > 270 && 360 > Heading[i])
+                {
+                    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
+                    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
+                }
 
                 Plane_callsigns[i].RenderTransform = new TranslateTransform(X_Length, Y_Length);
-                Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i]);
+                Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i]); 
                 
             }
 
             
         }
+
+        private void btnChange_Click(object sender, RoutedEventArgs e)
+        {
+            Heading[cmb_PlaneSelector.SelectedIndex] = Convert.ToInt32(txtHeading.Text);
+
+            cmb_PlaneSelector.Items.Clear();
+           //heading = Convert.ToInt32(txtHeading);
+            //speed = Convert.ToInt32(txtSpeed);
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-            cmb_PlaneSelector.Items.Clear();
-            heading = Convert.ToInt32(txtHeading);
-            speed = Convert.ToInt32(txtSpeed);
+         
+            
+           
 
-       
         }
 
         public void CallSign_Creator(int length)
