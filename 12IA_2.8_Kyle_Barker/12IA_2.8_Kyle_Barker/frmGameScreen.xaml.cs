@@ -40,7 +40,7 @@ namespace _12IA_2._8_Kyle_Barker
 
             List<string> Callsign = new List<string>();
 
-            Heading.Add(5);
+            Heading.Add(45);
             Heading.Add(5);
             Heading.Add(45);
             Heading.Add(35);
@@ -60,78 +60,209 @@ namespace _12IA_2._8_Kyle_Barker
         double Y_Location_Start;
 
         double X_Location_Current = 0;
-        double Y_Location_Current = 0;
+        double Y_Location_Current = 0;  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         double Y_Point;
         double X_Point = 100;
         double X_Length, Y_Length;
-
+        int distance = 0;
         // TranslateTransform translateTransform1 = new TranslateTransform();
         public void dispatcherTimer_Tick(object sender, EventArgs e)
         {
+            distance += 1;
 
-            foreach (var item in Plane_callsigns)
-            { int i= 1;
+
+            if (distance > 50) { distance = 50; }
+            //foreach (var item in Plane_callsigns)
+            //{ int i= 1;
                 
-                i++;
+               
 
-                TranslateTransform[] translateTransform = new TranslateTransform[10];
+            //    TranslateTransform[] translateTransform = new TranslateTransform[10];
 
-                item.RenderTransform = translateTransform[i];
-item.t                X_Location_Current = translateTransform[i].X;
-                Y_Location_Current = translateTransform[i].Y;
+            //    item.RenderTransform = translateTransform[i-1];
+            //   // item.Margin(Left) =
+            //                       // X_Location_Current = item.Margin.Left;
 
-                X_Length = (2 * (Math.Sin((Math.PI / 180) * Heading[i + 1])));
-                Y_Length = (X_Length * Math.Tan((90 - Heading[i-1]) * (Math.PI / 180)));
-                X_Point = X_Location_Current + X_Length;
-                Y_Point = Y_Location_Current - Y_Length;
+            //  //  X_Location_Current = translateTransform[i].X;
+            //    X_Location_Current = item.Margin.Right;
+            //    Y_Location_Current = item.Margin.Top;
 
-                translateTransform[i].X = X_Point;
-                translateTransform[i].Y = Y_Point;
+            //    X_Length = (2 * (Math.Sin((Math.PI / 180) * Heading[i + 1])));
+            //    Y_Length = (X_Length * Math.Tan((90 - Heading[i-1]) * (Math.PI / 180)));
+            //    X_Point = X_Location_Current + X_Length;
+            //    Y_Point = Y_Location_Current - Y_Length;
 
-                item.RenderTransform = translateTransform[i];
-            }
+            //    //translateTransform[i].X = X_Point;
+            //    //translateTransform[i].Y = Y_Point;
+            //    i++;
 
-
-
+            //}
 
             for (int i = 0; i < Plane_callsigns.Length; i++)
             {
 
-                //TranslateTransform translateTransform1 = new TranslateTransform(X_Point, Y_Point);
+               
 
 
 
-                //if (i > 0)
-                //{
-                //    Plane_callsigns[i - 1].RenderTransform = translateTransform1;
-                //}
-                //else
-                //{
-                //    Plane_callsigns[i].RenderTransform = translateTransform1;
-                //}
-                //translateTransform1 = null;
-                //X_Point = double.NaN;
-                //Y_Point = double.NaN;
-
-                //Plane_callsigns[i].RenderTransform = translateTransform1;
 
 
-                //X_Location_Current = translateTransform1.X;
-                //Y_Location_Current = translateTransform1.Y;
-
-                //X_Length = (2 * (Math.Sin((Math.PI / 180) * Heading[i + 1])));
-                //Y_Length = (X_Length * Math.Tan((90 - Heading[i + 1]) * (Math.PI / 180)));
-                //X_Point = X_Location_Current + X_Length;
-                //Y_Point = Y_Location_Current - Y_Length;
-
-                //translateTransform1.X = X_Point;
-                //translateTransform1.Y = Y_Point;
-
-                //Plane_callsigns[i].RenderTransform = translateTransform1;
 
 
-                //Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i + 1]);
+
+
+                X_Length = Math.Sin(Heading[i]) * distance;
+                Y_Length = Math.Cos(Heading[i]) * distance;
+
+               
+
+                Plane_callsigns[i].RenderTransform = new TranslateTransform(X_Length, Y_Length);
+                Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i]);
+
+
+
 
 
             }
@@ -139,7 +270,7 @@ item.t                X_Location_Current = translateTransform[i].X;
 
 
 
-         void Plane_Movement() {
+            void Plane_Movement() {
             //TranslateTransform translateTransform1 = new TranslateTransform();
 
             //for (int i = 0; i < Plane_callsigns.Length; i++)
