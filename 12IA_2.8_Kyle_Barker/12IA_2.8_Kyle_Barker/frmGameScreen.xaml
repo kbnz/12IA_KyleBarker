@@ -14,6 +14,7 @@
     
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="auto" Margin="0,0,0,0" Width="1900" Name="LayoutRoot">
 
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="739*" />
             <ColumnDefinition Width="211*" />
@@ -25,11 +26,7 @@
 
         <Image Source="/Auckland.jpg" HorizontalAlignment="Center" Margin="-186,2,0,-2"  Name="background" Stretch="UniformToFill" Width="1664"/>
         <Button x:Name="btnChange" Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="20" Grid.ColumnSpan="2" Margin="1477,267,1,0" Click="btnChange_Click"/>
-       
 
-        
-        <Image Source="/imgPlaneSprite.png"  Name="sprPlane" Margin="822,68,632,291" Grid.Column="0" Tag="bab"/>
-     
 
 
 

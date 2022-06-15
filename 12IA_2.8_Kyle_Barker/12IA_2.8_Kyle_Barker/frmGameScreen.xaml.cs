@@ -24,7 +24,10 @@ namespace _12IA_2._8_Kyle_Barker
     {
         List<string> Callsign = new List<string>();
         List<int> Heading = new List<int>();
-        List<int> Speed = new List<int>();
+        List<int> Speed = new List<int>()   ;
+        List<double> positionX = new List<double>();
+        List<double> positionY = new List<double>();
+
         int nPlane = 10;
         Image[] Plane_callsigns = new Image[10];
         Random rand = new Random();
@@ -40,63 +43,82 @@ namespace _12IA_2._8_Kyle_Barker
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
 
 
-            dispatcherTimer.Start();
+            
             List<string> Callsign = new List<string>();
-            for (int i = 0; i < nPlane; i++)
+            for (int i = 0; i < nPlane+1; i++)
             {
               Heading.Add(rand.Next(1,360));
-              
+                positionY.Add(i);
+                positionX.Add(i);
             }
-            
+
+
+
+            dispatcherTimer.Start();
         }
 
 
         double X_Length, Y_Length;
         int distance = 0;
         double tempHeading;
+
+        public Point planeCurr { get; private set; }
+
         // TranslateTransform translateTransform1 = new TranslateTransform();
         public void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             distance += 1;
-
             //Limits movement of plane
             //   if (distance > 50) { distance = 50; }
-
+            double pX;
+            double pY;
             for (int i = 0; i < Plane_callsigns.Length; i++)
             {
+
+                Point planeCurrent = new Point();
+                //double myvar2;
+                //tempHeading = Plane_callsigns[i].ActualHeight;
+                planeCurrent = Plane_callsigns[i].PointFromScreen(new Point(0, 0));
+                pX = planeCurrent.X;
+                pY = planeCurrent.Y;
+
+                positionX[i] = pX;
+                positionY[i] = pY;
+
 
 
 
                 tempHeading = ((Heading[i] % 90) * (Math.PI*180));
 
-                if ( 90 > Heading[i])
-                {
+            
 
                     X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
                     Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
 
-                }
+                
 
-                else if (Heading[i] > 90 && 180 > Heading[i])
-                {
+                //else if (Heading[i] > 90 && 180 > Heading[i])
+                //{
 
-                    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
-                    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
-                }
-                else if (Heading[i] > 180 && 270 > Heading[i])
-                {
-                    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
-                    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
-                }
-                else if  (Heading[i] > 270 && 360 > Heading[i])
-                {
-                    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
-                    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
-                }
+                //    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
+                //    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
+                //}
+                //else if (Heading[i] > 180 && 270 > Heading[i])
+                //{
+                //    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
+                //    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
+                //}
+                //else if  (Heading[i] > 270 && 360 > Heading[i])
+                //{
+                //    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
+                //    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
+                //}
 
                 Plane_callsigns[i].RenderTransform = new TranslateTransform(X_Length, Y_Length);
-                Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i]); 
-                
+                Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i]);
+
+               
+
             }
 
             
@@ -328,8 +350,9 @@ namespace _12IA_2._8_Kyle_Barker
                         Plane_callsigns[p].Stretch = Stretch.Fill;
 
                         LayoutRoot.Children.Add(Plane_callsigns[p]);
-                            
-                    }  
+                        
+
+                    }
                 }
             };
 
