@@ -95,12 +95,12 @@ namespace _12IA_2._8_Kyle_Barker
 
                 //}
 
-                tempHeading = ((Heading[i] % 90) * (Math.PI*180));
+                
 
             
 
-                    X_Length = positionX[i]*(Math.PI/180) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
-                    Y_Length = (positionY[i]* (Math.PI/180))-(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
+                    X_Length = (positionX[i]*(Math.PI/180) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) + positionX[i] * (Math.PI / 180);
+                    Y_Length = ((positionY[i]* (Math.PI/180))-(Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) + positionY[i] * (Math.PI / 180);
 
                 
 
@@ -135,7 +135,7 @@ namespace _12IA_2._8_Kyle_Barker
         {
             Heading[cmb_PlaneSelector.SelectedIndex] = Convert.ToInt32(txtHeading.Text);
 
-            cmb_PlaneSelector.Items.Clear();
+         //   cmb_PlaneSelector.Items.Clear();
            //heading = Convert.ToInt32(txtHeading);
             //speed = Convert.ToInt32(txtSpeed);
         }
