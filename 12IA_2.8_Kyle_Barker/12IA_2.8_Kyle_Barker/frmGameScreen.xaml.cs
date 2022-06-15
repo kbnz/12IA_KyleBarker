@@ -72,28 +72,35 @@ namespace _12IA_2._8_Kyle_Barker
             //   if (distance > 50) { distance = 50; }
             double pX;
             double pY;
+            Point planeCurrent = new Point();
             for (int i = 0; i < Plane_callsigns.Length; i++)
             {
 
-                Point planeCurrent = new Point();
+             
                 //double myvar2;
                 //tempHeading = Plane_callsigns[i].ActualHeight;
-                planeCurrent = Plane_callsigns[i].PointFromScreen(new Point(0, 0));
+                planeCurrent = Plane_callsigns[i].PointFromScreen( planeCurrent);
                 pX = planeCurrent.X;
                 pY = planeCurrent.Y;
 
                 positionX[i] = pX;
                 positionY[i] = pY;
 
+                //for (int k = 0; k < Plane_callsigns.Length; k++)
+                //{
+                //    foreach (var item in collection)
+                //    {
 
+                //    }
 
+                //}
 
                 tempHeading = ((Heading[i] % 90) * (Math.PI*180));
 
             
 
-                    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
-                    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
+                    X_Length = positionX[i]*(Math.PI/180) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
+                    Y_Length = (positionY[i]* (Math.PI/180))-(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
 
                 
 
