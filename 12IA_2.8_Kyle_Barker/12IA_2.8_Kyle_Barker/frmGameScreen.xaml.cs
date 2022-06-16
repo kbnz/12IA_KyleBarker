@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Threading;
 using System.Windows.Threading;
+using System.Speech.Synthesis;
+
 
 
 namespace _12IA_2._8_Kyle_Barker
@@ -168,7 +170,13 @@ namespace _12IA_2._8_Kyle_Barker
             positionAdjustX[cmb_PlaneSelector.SelectedIndex] = positionAdjustX[cmb_PlaneSelector.SelectedIndex] + (px * (Math.PI / 180));
             positionAdjustY[cmb_PlaneSelector.SelectedIndex] = positionAdjustY[cmb_PlaneSelector.SelectedIndex] + (py * (Math.PI / 180));
 
+            SpeechSynthesizer synth = new SpeechSynthesizer();
 
+            // Configure the audio output.   
+            synth.SetOutputToDefaultAudioDevice();
+
+            // Speak a string.  
+            synth.Speak($"{cmb_PlaneSelector.SelectedItem} turn heading  {Heading[cmb_PlaneSelector.SelectedIndex]}");
 
 
         }
