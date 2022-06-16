@@ -27,11 +27,14 @@ namespace _12IA_2._8_Kyle_Barker
         List<int> Speed = new List<int>()   ;
         List<double> positionX = new List<double>();
         List<double> positionY = new List<double>();
+        List<double> positionAdjustX = new List<double>();
+        List<double> positionAdjustY = new List<double>();
+
 
         int nPlane = 10;
         Image[] Plane_callsigns = new Image[10];
         Random rand = new Random();
-
+        Point planeCurrent = new Point();
         int heading, speed; 
 
         public frmGameScreen()
@@ -50,6 +53,9 @@ namespace _12IA_2._8_Kyle_Barker
               Heading.Add(rand.Next(1,360));
                 positionY.Add(i);
                 positionX.Add(i);
+
+                positionAdjustX.Add(i);
+                positionAdjustY.Add(i);
             }
 
 
@@ -72,7 +78,7 @@ namespace _12IA_2._8_Kyle_Barker
             //   if (distance > 50) { distance = 50; }
             double pX;
             double pY;
-            Point planeCurrent = new Point();
+
             for (int i = 0; i < Plane_callsigns.Length; i++)
             {
 
@@ -95,14 +101,16 @@ namespace _12IA_2._8_Kyle_Barker
 
                 //}
 
-                
 
-            
 
-                    X_Length = (positionX[i]*(Math.PI/180) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) + positionX[i] * (Math.PI / 180);
-                    Y_Length = ((positionY[i]* (Math.PI/180))-(Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) + positionY[i] * (Math.PI / 180);
 
-                
+
+               
+                Y_Length = (Math.Cos(Heading[i] * -(Math.PI / 180) * distance));
+
+                X_Length = ((positionX[i] * (Math.PI / 180)) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) + positionAdjustX[i];
+                Y_Length = ((positionY[i] * (Math.PI / 180)) - (Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) + positionAdjustY[i];
+
 
                 //else if (Heading[i] > 90 && 180 > Heading[i])
                 //{
@@ -134,10 +142,9 @@ namespace _12IA_2._8_Kyle_Barker
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
             Heading[cmb_PlaneSelector.SelectedIndex] = Convert.ToInt32(txtHeading.Text);
+            positionAdjustX[cmb_PlaneSelector.SelectedIndex] = positionAdjustX[cmb_PlaneSelector.SelectedIndex] + planeCurrent.X;
+            positionAdjustY[cmb_PlaneSelector.SelectedIndex] = positionAdjustY[cmb_PlaneSelector.SelectedIndex] + planeCurrent.Y;
 
-         //   cmb_PlaneSelector.Items.Clear();
-           //heading = Convert.ToInt32(txtHeading);
-            //speed = Convert.ToInt32(txtSpeed);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
