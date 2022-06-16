@@ -45,7 +45,7 @@ namespace _12IA_2._8_Kyle_Barker
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
 
-
+           // LayoutRoot.ColumnDefinitions[1].ActualWidth
             
             List<string> Callsign = new List<string>();
             for (int i = 0; i < nPlane+1; i++)
@@ -56,6 +56,7 @@ namespace _12IA_2._8_Kyle_Barker
 
                 positionAdjustX.Add(i);
                 positionAdjustY.Add(i);
+                
             }
 
 
@@ -108,28 +109,38 @@ namespace _12IA_2._8_Kyle_Barker
                
                 Y_Length = (Math.Cos(Heading[i] * -(Math.PI / 180) * distance));
 
-                X_Length = ((positionX[i] * (Math.PI / 180)) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) + positionAdjustX[i];
-                Y_Length = ((positionY[i] * (Math.PI / 180)) - (Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) + positionAdjustY[i];
 
 
-                //else if (Heading[i] > 90 && 180 > Heading[i])
-                //{
 
-                //    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
-                //    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
-                //}
-                //else if (Heading[i] > 180 && 270 > Heading[i])
-                //{
-                //    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
-                //    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
-                //}
-                //else if  (Heading[i] > 270 && 360 > Heading[i])
-                //{
-                //    X_Length = (Math.Sin((Heading[i] * (Math.PI / 180))) * distance);
-                //    Y_Length = -(Math.Cos(Heading[i] * (Math.PI / 180)) * distance);
-                //}
 
-                Plane_callsigns[i].RenderTransform = new TranslateTransform(X_Length, Y_Length);
+                if (Heading[i] > 0 && Heading[i] < 90)
+                {
+
+                    X_Length = ((positionX[i] * (Math.PI / 180)) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) + positionAdjustX[i];
+                    Y_Length = ((positionY[i] * (Math.PI / 180)) - (Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) - positionAdjustY[i];
+                }
+
+                else if (Heading[i] > 90 && 180 > Heading[i])
+                {
+
+
+                    X_Length = ((positionX[i] * (Math.PI / 180)) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) + positionAdjustX[i];
+                    Y_Length = ((positionY[i] * (Math.PI / 180)) - (Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) + positionAdjustY[i];
+                }
+                else if (Heading[i] > 180 && 270 > Heading[i])
+                {
+
+                    X_Length = ((positionX[i] * (Math.PI / 180)) +(Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) - positionAdjustX[i];
+                    Y_Length = ((positionY[i] * (Math.PI / 180)) - (Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) + positionAdjustY[i];
+                }
+                else if (Heading[i] > 270 && 360 > Heading[i])
+                {
+
+                    X_Length = ((positionX[i] * (Math.PI / 180)) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) - positionAdjustX[i];
+                    Y_Length = ((positionY[i] * (Math.PI / 180)) - (Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) - positionAdjustY[i];
+                }
+
+                    Plane_callsigns[i].RenderTransform = new TranslateTransform(X_Length, Y_Length);
                 Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i]);
 
                
@@ -141,9 +152,21 @@ namespace _12IA_2._8_Kyle_Barker
 
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
+            planeCurrent = Plane_callsigns[cmb_PlaneSelector.SelectedIndex].PointFromScreen(planeCurrent);
+            double px, py;
+
+            px = planeCurrent.X;
+            py = planeCurrent.Y;
+
             Heading[cmb_PlaneSelector.SelectedIndex] = Convert.ToInt32(txtHeading.Text);
-            positionAdjustX[cmb_PlaneSelector.SelectedIndex] = positionAdjustX[cmb_PlaneSelector.SelectedIndex] + planeCurrent.X;
-            positionAdjustY[cmb_PlaneSelector.SelectedIndex] = positionAdjustY[cmb_PlaneSelector.SelectedIndex] + planeCurrent.Y;
+            positionAdjustX[cmb_PlaneSelector.SelectedIndex] = 0;
+            positionAdjustY[cmb_PlaneSelector.SelectedIndex] = 0;
+
+            positionAdjustX[cmb_PlaneSelector.SelectedIndex] = positionAdjustX[cmb_PlaneSelector.SelectedIndex] + (px *(Math.PI/180));
+            positionAdjustY[cmb_PlaneSelector.SelectedIndex] = positionAdjustY[cmb_PlaneSelector.SelectedIndex] + (py * (Math.PI/180));
+
+     
+
 
         }
 
