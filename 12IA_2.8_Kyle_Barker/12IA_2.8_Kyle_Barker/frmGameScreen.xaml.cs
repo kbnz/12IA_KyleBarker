@@ -35,7 +35,8 @@ namespace _12IA_2._8_Kyle_Barker
         Image[] Plane_callsigns = new Image[10];
         Random rand = new Random();
         Point planeCurrent = new Point();
-        int heading, speed; 
+        int heading, speed;
+        double adjustX, adjustY;
 
         public frmGameScreen()
         {
@@ -43,7 +44,7 @@ namespace _12IA_2._8_Kyle_Barker
             CallSign_Creator(nPlane);
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 35);
 
            // LayoutRoot.ColumnDefinitions[1].ActualWidth
             
@@ -152,30 +153,40 @@ namespace _12IA_2._8_Kyle_Barker
 
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
+
             planeCurrent = Plane_callsigns[cmb_PlaneSelector.SelectedIndex].PointFromScreen(planeCurrent);
             double px, py;
 
             px = planeCurrent.X;
             py = planeCurrent.Y;
-
             Heading[cmb_PlaneSelector.SelectedIndex] = Convert.ToInt32(txtHeading.Text);
+
+
             positionAdjustX[cmb_PlaneSelector.SelectedIndex] = 0;
             positionAdjustY[cmb_PlaneSelector.SelectedIndex] = 0;
 
-            positionAdjustX[cmb_PlaneSelector.SelectedIndex] = positionAdjustX[cmb_PlaneSelector.SelectedIndex] + (px *(Math.PI/180));
-            positionAdjustY[cmb_PlaneSelector.SelectedIndex] = positionAdjustY[cmb_PlaneSelector.SelectedIndex] + (py * (Math.PI/180));
+            positionAdjustX[cmb_PlaneSelector.SelectedIndex] = positionAdjustX[cmb_PlaneSelector.SelectedIndex] + (px * (Math.PI / 180));
+            positionAdjustY[cmb_PlaneSelector.SelectedIndex] = positionAdjustY[cmb_PlaneSelector.SelectedIndex] + (py * (Math.PI / 180));
 
-     
+
 
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        void PlaneLocationAdjustor(int item)
         {
-            
-         
-            
-           
+            planeCurrent = Plane_callsigns[item].PointFromScreen(planeCurrent);
+          
+
+            adjustX = planeCurrent.X;
+            adjustY = planeCurrent.Y;
+
+
+            positionAdjustX[item] = 0;
+            positionAdjustY[item] = 0;
+
+            positionAdjustX[item] = positionAdjustX[item] + (adjustX * (Math.PI / 180));
+            positionAdjustY[item] = positionAdjustY[item] + (adjustY * (Math.PI / 180));
 
         }
 
@@ -385,6 +396,8 @@ namespace _12IA_2._8_Kyle_Barker
                         Plane_callsigns[p].Width = 50;
                         Plane_callsigns[p].Height = 50;
                         Plane_callsigns[p].Stretch = Stretch.Fill;
+
+
 
                         LayoutRoot.Children.Add(Plane_callsigns[p]);
                         
