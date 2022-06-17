@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Threading;
 using System.Windows.Threading;
+using System.Speech.Synthesis;
+
+
 
 namespace _12IA_2._8_Kyle_Barker
 {
@@ -22,49 +25,177 @@ namespace _12IA_2._8_Kyle_Barker
     public partial class frmGameScreen : Window
     {
         List<string> Callsign = new List<string>();
+        List<int> Heading = new List<int>();
+        List<int> Speed = new List<int>()   ;
+        List<double> positionX = new List<double>();
+        List<double> positionY = new List<double>();
+        List<double> positionAdjustX = new List<double>();
+        List<double> positionAdjustY = new List<double>();
+
+
+        int nPlane = 10;
+        Image[] Plane_callsigns = new Image[10];
+        Random rand = new Random();
+        Point planeCurrent = new Point();
+        int heading, speed;
+        double adjustX, adjustY;
+
         public frmGameScreen()
         {
-            List<string> Callsign = new List<string>();
             InitializeComponent();
-            int winHeight, winWidth;
-            CallSign_Creator(10);
-           
-            
-            
-
-        }
-      
-
-        public object IATAcallsign { get; private set; }
-
-
-        //private void ObservableCollection<T>()
-        //{
-
-        //}
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+            CallSign_Creator(nPlane);
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
-          
-             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
-             dispatcherTimer.Tick += Timer_Tick;
-             dispatcherTimer.Start();
-            cmb_PlaneSelector.Items.Clear();
+            dispatcherTimer.Tick += dispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 35);
 
-            //for (int i = 0; i > -1; i++)
-            //{
-            //    Plane.LayoutTransform = new RotateTransform(i);
-            //}
-            //Plane.LayoutTransform = new RotateTransform(45);
+           // LayoutRoot.ColumnDefinitions[1].ActualWidth
+            
+            List<string> Callsign = new List<string>();
+            for (int i = 0; i < nPlane+1; i++)
+            {
+              Heading.Add(rand.Next(1,360));
+                positionY.Add(i);
+                positionX.Add(i);
+
+                positionAdjustX.Add(i);
+                positionAdjustY.Add(i);
+                
+            }
+
+
+
+            dispatcherTimer.Start();
+        }
+
+
+        double X_Length, Y_Length;
+        int distance = 0;
+        double tempHeading;
+
+        public Point planeCurr { get; private set; }
+
+        // TranslateTransform translateTransform1 = new TranslateTransform();
+        public void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            distance += 1;
+            //Limits movement of plane
+            //   if (distance > 50) { distance = 50; }
+            double pX;
+            double pY;
+
+            for (int i = 0; i < Plane_callsigns.Length; i++)
+            {
+
+             
+                //double myvar2;
+                //tempHeading = Plane_callsigns[i].ActualHeight;
+                planeCurrent = Plane_callsigns[i].PointFromScreen( planeCurrent);
+                pX = planeCurrent.X;
+                pY = planeCurrent.Y;
+
+                positionX[i] = pX;
+                positionY[i] = pY;
+
+                //for (int k = 0; k < Plane_callsigns.Length; k++)
+                //{
+                //    foreach (var item in collection)
+                //    {
+
+                //    }
+
+                //}
+
+
+
+
+
+               
+                Y_Length = (Math.Cos(Heading[i] * -(Math.PI / 180) * distance));
+
+
+
+
+
+                if (Heading[i] > 0 && Heading[i] < 90)
+                {
+
+                    X_Length = ((positionX[i] * (Math.PI / 180)) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) + positionAdjustX[i];
+                    Y_Length = ((positionY[i] * (Math.PI / 180)) - (Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) - positionAdjustY[i];
+                }
+
+                else if (Heading[i] > 90 && 180 > Heading[i])
+                {
+
+
+                    X_Length = ((positionX[i] * (Math.PI / 180)) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) + positionAdjustX[i];
+                    Y_Length = ((positionY[i] * (Math.PI / 180)) - (Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) + positionAdjustY[i];
+                }
+                else if (Heading[i] > 180 && 270 > Heading[i])
+                {
+
+                    X_Length = ((positionX[i] * (Math.PI / 180)) +(Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) - positionAdjustX[i];
+                    Y_Length = ((positionY[i] * (Math.PI / 180)) - (Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) + positionAdjustY[i];
+                }
+                else if (Heading[i] > 270 && 360 > Heading[i])
+                {
+
+                    X_Length = ((positionX[i] * (Math.PI / 180)) + (Math.Sin((Heading[i] * (Math.PI / 180))) * distance)) - positionAdjustX[i];
+                    Y_Length = ((positionY[i] * (Math.PI / 180)) - (Math.Cos(Heading[i] * (Math.PI / 180)) * distance)) - positionAdjustY[i];
+                }
+
+                    Plane_callsigns[i].RenderTransform = new TranslateTransform(X_Length, Y_Length);
+                Plane_callsigns[i].LayoutTransform = new RotateTransform(Heading[i]);
+
+               
+
+            }
+
+            
+        }
+
+        private void btnChange_Click(object sender, RoutedEventArgs e)
+        {
+
+            planeCurrent = Plane_callsigns[cmb_PlaneSelector.SelectedIndex].PointFromScreen(planeCurrent);
+            double px, py;
+
+            px = planeCurrent.X;
+            py = planeCurrent.Y;
+            Heading[cmb_PlaneSelector.SelectedIndex] = Convert.ToInt32(txtHeading.Text);
+
+
+            positionAdjustX[cmb_PlaneSelector.SelectedIndex] = 0;
+            positionAdjustY[cmb_PlaneSelector.SelectedIndex] = 0;
+
+            positionAdjustX[cmb_PlaneSelector.SelectedIndex] = positionAdjustX[cmb_PlaneSelector.SelectedIndex] + (px * (Math.PI / 180));
+            positionAdjustY[cmb_PlaneSelector.SelectedIndex] = positionAdjustY[cmb_PlaneSelector.SelectedIndex] + (py * (Math.PI / 180));
+
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+
+            // Configure the audio output.   
+            synth.SetOutputToDefaultAudioDevice();
+
+            // Speak a string.  
+            synth.Speak($"{cmb_PlaneSelector.SelectedItem} turn heading  {Heading[cmb_PlaneSelector.SelectedIndex]}");
+
 
         }
 
-          void Timer_Tick(object sender, EventArgs e)
-        { 
+        void PlaneLocationAdjustor(int item)
+        {
+            planeCurrent = Plane_callsigns[item].PointFromScreen(planeCurrent);
+          
 
-            sprPlane.LayoutTransform = new RotateTransform(40);
-           
+            adjustX = planeCurrent.X;
+            adjustY = planeCurrent.Y;
+
+
+            positionAdjustX[item] = 0;
+            positionAdjustY[item] = 0;
+
+            positionAdjustX[item] = positionAdjustX[item] + (adjustX * (Math.PI / 180));
+            positionAdjustY[item] = positionAdjustY[item] + (adjustY * (Math.PI / 180));
+
         }
 
         public void CallSign_Creator(int length)
@@ -72,8 +203,6 @@ namespace _12IA_2._8_Kyle_Barker
             string code;
             int number;
             string Completed_callsign = "";
-           
-        
 
             String[] IATAcallsign = {"AA","2G",
 "CO",
@@ -258,27 +387,33 @@ namespace _12IA_2._8_Kyle_Barker
 "UX",
 "BG",
  };
-
-            Random rand = new Random();
-            for (int i = 0; i < length; i++)
+           
+           
+            for (int p = 0; p < length; p++)
             {
-
                 Completed_callsign = null;
-            while (!Callsign.Contains(Completed_callsign)){
-                code = IATAcallsign[rand.Next(0, IATAcallsign.Length)];
-                number = rand.Next(100, 999);
-                Completed_callsign = $"{code}{number}";
+                while (!Callsign.Contains(Completed_callsign)) {
+                    code = IATAcallsign[rand.Next(0, IATAcallsign.Length)];
+                    number = rand.Next(100, 999);
+                    Completed_callsign = $"{code}{number}";
 
-                Callsign.Add($"{Completed_callsign}");
+                    Callsign.Add($"{Completed_callsign}");
+                    {
+                        Plane_callsigns[p] = new Image();
+                        Plane_callsigns[p].Source = new BitmapImage(new Uri(@"imgPlaneSprite.png", UriKind.Relative));
+                        Plane_callsigns[p].Width = 50;
+                        Plane_callsigns[p].Height = 50;
+                        Plane_callsigns[p].Stretch = Stretch.Fill;
 
 
-            }
+
+                        LayoutRoot.Children.Add(Plane_callsigns[p]);
+                        
+
+                    }
+                }
             };
-           
-           
 
-            
-            
             foreach (string item in Callsign)
             {
                 cmb_PlaneSelector.Items.Add(item);
