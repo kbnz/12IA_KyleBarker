@@ -45,11 +45,15 @@ namespace _12IA_2._8_Kyle_Barker
             InitializeComponent();
             CallSign_Creator(nPlane);
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            DispatcherTimer dispatcherTimer_Voice = new DispatcherTimer();
+
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 35);
+            dispatcherTimer_Voice.Tick += dispatcherTimer_Tick_Voice;
+            dispatcherTimer_Voice.Interval = new TimeSpan(0, 0, 0, 0, 35);
 
-           // LayoutRoot.ColumnDefinitions[1].ActualWidth
-            
+            // LayoutRoot.ColumnDefinitions[1].ActualWidth
+
             List<string> Callsign = new List<string>();
             for (int i = 0; i < nPlane+1; i++)
             {
@@ -65,8 +69,27 @@ namespace _12IA_2._8_Kyle_Barker
 
 
             dispatcherTimer.Start();
+            dispatcherTimer_Voice.Start();
+
         }
 
+        public void dispatcherTimer_Tick_Voice(object sender, EventArgs e)
+        {
+            Speech();        
+
+            
+        }
+
+        private void Speech()
+        {
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+
+            // Configure the audio output.   
+            synth.SetOutputToDefaultAudioDevice();
+
+            // Speak a string.  
+            synth.Speak($"{cmb_PlaneSelector.SelectedItem} turn heading  {Heading[cmb_PlaneSelector.SelectedIndex]}");
+        }
 
         double X_Length, Y_Length;
         int distance = 0;
@@ -153,7 +176,7 @@ namespace _12IA_2._8_Kyle_Barker
             
         }
 
-        private void btnChange_Click(object sender, RoutedEventArgs e)
+         void btnChange_Click(object sender, RoutedEventArgs e)
         {
 
             planeCurrent = Plane_callsigns[cmb_PlaneSelector.SelectedIndex].PointFromScreen(planeCurrent);
@@ -170,13 +193,8 @@ namespace _12IA_2._8_Kyle_Barker
             positionAdjustX[cmb_PlaneSelector.SelectedIndex] = positionAdjustX[cmb_PlaneSelector.SelectedIndex] + (px * (Math.PI / 180));
             positionAdjustY[cmb_PlaneSelector.SelectedIndex] = positionAdjustY[cmb_PlaneSelector.SelectedIndex] + (py * (Math.PI / 180));
 
-            SpeechSynthesizer synth = new SpeechSynthesizer();
 
-            // Configure the audio output.   
-            synth.SetOutputToDefaultAudioDevice();
-
-            // Speak a string.  
-            synth.Speak($"{cmb_PlaneSelector.SelectedItem} turn heading  {Heading[cmb_PlaneSelector.SelectedIndex]}");
+            Speech();
 
 
         }
